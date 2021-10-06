@@ -4,3 +4,9 @@
 [submodule "cana-media"]
 	path = cana-media
 	url = https://github.com/FishTechnology/cana-media.git
+[submodule "cana-api"]
+	path = cana-api
+	url = https://github.com/FishTechnology/cana-api.git
+[submodule "cana-scheduler"]
+	path = cana-scheduler
+	url = https://github.com/FishTechnology/cana-scheduler.git
