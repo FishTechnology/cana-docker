@@ -1,3 +1,6 @@
 [submodule "cana-component"]
 	path = cana-component
 	url = https://github.com/FishTechnology/cana-component
+[submodule "cana-media"]
+	path = cana-media
+	url = https://github.com/FishTechnology/cana-media.git
