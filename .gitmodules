@@ -10,3 +10,6 @@
 [submodule "cana-scheduler"]
 	path = cana-scheduler
 	url = https://github.com/FishTechnology/cana-scheduler.git
+[submodule "cana-db"]
+	path = cana-db
+	url = https://github.com/FishTechnology/cana-db.git
