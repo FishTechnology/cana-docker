@@ -1,0 +1,110 @@
+<div class="modelcontainer">
+  <mat-card>
+    <form [formGroup]="environmentVariableForm">
+      <mat-dialog-content>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <div fxFlex="49%">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Environment Variable Key</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="key"
+                placeholder="key"
+                autocomplete="off"
+              />
+              <button
+                *ngIf="environmentVariableForm.controls['key'].value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+                (click)="environmentVariableForm.controls['key'].reset()"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div fxFlex="50%">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Value Type</mat-label>
+              <mat-select formControlName="valueType">
+                <mat-option
+                  [value]="variableType.value"
+                  *ngFor="let variableType of environmentValueTypes"
+                  >{{ variableType.text }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between"
+          *ngIf="environmentVariableForm.controls['valueType'].value === 'text'"
+        >
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Environment Variable Value</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="value"
+              placeholder="value"
+              autocomplete="off"
+            />
+            <button
+              *ngIf="environmentVariableForm.controls['value'].value"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="environmentVariableForm.controls['value'].reset()"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between"
+          *ngIf="environmentVariableForm.controls['valueType'].value === 'file'"
+        >
+          <ngx-dropzone
+            [multiple]="false"
+            (change)="onSelect($event)"
+            class="full-width"
+          >
+            <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+            <ngx-dropzone-preview
+              *ngFor="let f of files"
+              [removable]="true"
+              (removed)="onRemove(f)"
+            >
+              <ngx-dropzone-label
+                >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+              >
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Leave a comment</mat-label>
+            <textarea matInput formControlName="comments"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close [mat-dialog-close]="true">
+          Cancel
+        </button>
+        <button
+          mat-raised-button
+          cdkFocusInitial
+          color="primary"
+          [disabled]="!environmentVariableForm.valid"
+          (click)="createEnvironmentVariable()"
+        >
+          Save
+        </button>
+      </mat-dialog-actions>
+    </form>
+  </mat-card>
+</div>

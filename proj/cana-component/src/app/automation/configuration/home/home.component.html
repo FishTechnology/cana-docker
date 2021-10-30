@@ -1,0 +1,16 @@
+<mat-sidenav-container class="config-container">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        routerLink="/configuration/globalvariables"
+        routerLinkActive="router-link-active"
+        >Global Variable</a
+      >
+      <a mat-list-item routerLink="/configuration/environments">Environment</a>
+      <a mat-list-item routerLink="/configuration/testplans">Test Plan</a>
+      <a mat-list-item routerLink="/configuration/testcases">Test Case</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content> <router-outlet></router-outlet> </mat-sidenav-content>
+</mat-sidenav-container>
